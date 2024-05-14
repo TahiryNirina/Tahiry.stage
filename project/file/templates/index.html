@@ -1,0 +1,27 @@
+
+<H1>depose un fichier</H1>
+
+
+{% block content %}
+    <h2>Upload a file</h2>
+    <form  action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+
+
+    {% for file in files %}
+        <p>{{ file.caption }}</p>
+        <a href="{{ file.file.url }}">Download</a>
+        <form action="." method="delete">
+            {% csrf_token %}
+            <a href="{{ file.file.url }}" class="button"></a>
+            <input class="button" name="delete" type="submit" value="delete" >
+
+        </form>
+    {% empty %}
+        <p>No files uploaded yet.</p>
+    {% endfor %}
+{% endblock %}  
