@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<style media="screen">
+.col-md-6{
+    height:auto;
+    width: 500px;
+    scrollbar-width:auto ;
+    background-color: rgba(148, 154, 233, 0.13);
+    position:relative;
+    transform: translate(flex,flex);
+    top: 50%;
+    left: 50%;
+    border-radius: 0px;
+    border: 0 solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 2px rgba(8,7,16,0.6);
+    padding: 35px 35px;
+  }
+  .card {
+    font-size: 20px;
+    font-weight: bold;
+    font-display:inherit;
+    }
+</style>
+<h2>Fichiers enregistrés</h2>
+    <div class="col-md-6" style="width: 18rem;">
+        {% for file in files %}
+        <p>{{ file.caption }}</p>
+        <form method="POST" action="{% url 'matiere' niveau matiere %}">
+            {% csrf_token %}
+            <button formnovalidate class="btn btn-danger" name="file_id" value="{{ file.id }}">Download </button>
+    </form>
+        <form action="{% url 'matiere' niveau matiere %}" method="post">
+            {% csrf_token %}
+            <button formnovalidate class="btn btn-danger" name="delete" value="{{ file.id }}">Delete</button>
+        </form>
+        {% empty %}
+           <p>No files uploaded yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
