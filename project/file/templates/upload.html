@@ -1,11 +1,20 @@
 {% extends 'navbar.html' %}
 {% block content %}
+
+<style>
+    .container {
+        transform: translate(flex,flex);
+        padding: 20px;
+        border: 3px;
+    }
+
+</style>
 <h2>Upload</h2>
     <div class="container">
         <form  action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="button">Téléverser</button></button>
+            <button type="submit" class="btn btn-primary">Téléverser</button></button>
             <a href="https://base64.guru/converter/encode/pdf" class="btn btn-primary">convertir un fichier </a>
         </form>
         <hr>
