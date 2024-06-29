@@ -12,5 +12,6 @@ urlpatterns = [
     path("<str:niveau>", views.niveau, name="niveau"),
     path("<str:niveau>/<str:matiere>", views.matiere, name='matiere'),
     path("upload/",views.uploadfichier,name="upload"),
+    path('search/',views.search,name="searched"),
 ]
     

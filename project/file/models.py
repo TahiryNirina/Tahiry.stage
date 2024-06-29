@@ -29,8 +29,8 @@ class File(models.Model):
     niveau = models.CharField(null=True,choices=niveau_choix)
     matiere = models.CharField(null=True,choices=matiere_choix)
     caption = models.CharField(max_length=100)
-    file = models.FileField(null=True, editable=True)
-   #file = models.BinaryField(null=True, editable=True)
+    #file = models.FileField(null=True, editable=True)
+    file = models.BinaryField(null=True, editable=True)
     def __str__(self):
         return self.caption
 

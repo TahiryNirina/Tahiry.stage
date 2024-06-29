@@ -12,6 +12,17 @@ from django.contrib.auth.decorators import login_required
 def HomePage(request):
     return render(request,'home.html')
 
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+    else:
+        searched = request.POST['searched']
+        files = File.objects.filter(title__contains=searched)
+    return render(request, 'search.html', {'searched': searched, 'files': files})
+
+
+
+
 
 def index(request):
     form = FileForm()
@@ -52,6 +63,7 @@ def uploadfichier(request):
     niveaux = ["CE1","CE2", "CM1", "CM2", "6eme", "5eme", "4eme", "3eme"]
     context['niveaux'] = niveaux
     context['files'] = files
+    
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():

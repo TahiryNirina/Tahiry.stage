@@ -24,6 +24,7 @@
         <form method="POST" action="{% url 'matiere' niveau matiere %}">
             {% csrf_token %}
             <button formnovalidate class="btn btn-danger" name="file_id" value="{{ file.id }}">Download </button>
+    
     </form>
         <form action="{% url 'matiere' niveau matiere %}" method="post">
             {% csrf_token %}
